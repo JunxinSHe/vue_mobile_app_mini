@@ -32,10 +32,10 @@
 					</div>
         </li>
         <!-- 具体分类 -->
-        <li v-for="item in goods" class="food-list food-list-hook">
+        <li v-for="item in goods" class="food-list food-list-hook" >
           <h3 class="title">{{item.name}}</h3>
           <ul>
-            <li v-for="food in item.spus" class="food-item">
+            <li v-for="food in item.spus" class="food-item" @click="showDetail(food)">
               <div class="icon" :style="head_bg(food.picture)">
 
               </div>
@@ -62,7 +62,11 @@
       </ul>
     </div>
 
+    <!-- 购物车 -->
     <Shopcart :poiInfo='poiInfo' :selectFoods='selectFoods'></Shopcart>
+
+    <!-- 商品详情 -->
+    <Food :food="selectedFood" ref="foodView"></Food>
   </div>
 </template>
 
@@ -70,6 +74,8 @@
 import BScroll from "better-scroll";
 import Shopcart from "components/Shopcart/Shopcart";
 import Cartcontrol from "components/Cartcontrol/Cartcontrol";
+import Food from "components/Food/Food";
+
 
 export default {
   data() {
@@ -164,6 +170,11 @@ export default {
         }
       });
       return count;
+    },
+    showDetail(food){
+      this.selectedFood = food;
+
+      this.$refs.foodView.showView();
     }
 
   },
@@ -198,7 +209,8 @@ export default {
   components: {
     BScroll,
     Shopcart,
-    Cartcontrol
+    Cartcontrol,
+    Food
   }
 }
 </script>
