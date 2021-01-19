@@ -1,5 +1,5 @@
 <template lang="html">
-  <transition name="detail">
+  <transition name="food-detail">
     <div class="food" v-show="showFlag" ref="foodView" >
       <div class="food-wrapper">
         <div class="food-content">
@@ -134,10 +134,10 @@ export default {
     z-index: 90;
   }
 
-  .detail-enter-active, .detail-leave-active {
+  .food-detail-enter-active, .food-detail-leave-active {
     transition:  1.0s;
   }
-  .detail-enter, .detail-leave-to {
+  .food-detail-enter, .food-detail-leave-to {
     transform: translateX(100%);
   }
 

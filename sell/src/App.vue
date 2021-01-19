@@ -2,10 +2,12 @@
   <div id="app">
     <Myheader :poiInfo='poiInfo'></Myheader>
 
-    <Mynav></Mynav>
+    <Mynav :commentNum="commentNum"></Mynav>
 
-    <router-view></router-view>
-
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    
   </div>
 </template>
 
@@ -21,7 +23,8 @@ export default {
   },
   data(){
     return {
-      poiInfo: {}
+      poiInfo: {},
+      commentNum: 0
     }
   },
   created(){ //发起异步请求获取数据
@@ -40,7 +43,19 @@ export default {
       .catch(function(error){
         console.log(error);
       });
-  }
+
+
+    this.$axios.get('/api/ratings')
+      .then(function(response){
+        var dataSource = response.data;
+        if(dataSource.code ==0){
+          that.commentNum = dataSource.data.comment_num;
+        }
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+  },
 }
 </script>
 

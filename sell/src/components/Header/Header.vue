@@ -50,7 +50,7 @@
       </div>
 
       <!-- 公告详情 -->
-      <transition name="detail">
+      <transition name="bulletin-detail">
         <div class="bulletin-detail" v-show="isShow">
           <div class="detail-wrapper">
             <div class="main-wrapper" :style="detail_bg">
@@ -415,14 +415,14 @@ export default {
     .xxx-leave-to
     .xxx-leave-active
   */
-  .detail-enter-active, .detil-leave-active{
+  .bulletin-detail-enter-active, .bulletin-detail-leave-active{
     transition: 1s all;
   }
 
-  .detail-enter, .detail-leave-to{
+  .bulletin-detail-enter, .bulletin-detail-leave-to{
     opacity:0;
   }
-  .detail-enter-to, .detail-leave{
+  .bulletin-detail-enter-to, .bulletin-detail-leave{
     opacity:1;
   }
 
